@@ -1,0 +1,119 @@
+body{
+    color: #333333;
+    font-family: Helvetica;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Style the navigation links */
+nav {
+    margin-top: 20px; /* Add spacing between header text and links */
+  }
+  
+  .nav-link {
+    display: inline-block; /* Display links horizontally */
+    margin: 0 10px; /* Add spacing between links */
+    text-decoration: none; /* Remove underline from links */
+    color: #fff; /* Text color for links */
+    background-color: #0056b3; /* Background color for links */
+    padding: 10px 20px; /* Padding around links */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Add a smooth hover effect */
+  }
+  
+  .nav-link:hover {
+    background-color: #0070db; /* Change background color on hover */
+  }
+
+footer{
+    margin-top: auto;
+    background: #ffffff; 
+    border-top: 1px solid #cccccc;
+    padding: 16px;
+    color: #666666;
+    font-size: 14px;
+    text-align: center;
+} 
+
+
+/* Style the header */
+header {
+    background-color: #007bff; /* Background color for the header */
+    color: #fff; /* Text color for the header */
+    padding: 20px; /* Padding around text */
+    text-align: center; /* Center-align text */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2); /* Add a shadow */
+  }
+  
+  /* Style the h1 text within the header */
+  header h1 {
+    font-size: 24px; /* Adjust the font size */
+    margin: 0; /* Remove margin to prevent spacing */
+  }
+  
+
+
+#imageContainer {
+    width: 300px; /* Set the desired width */
+    height: 300px; /* Set the desired height */
+    border: 2px solid #000; /* Add a border for a nice frame */
+    overflow: hidden; /* Hide any overflowing image content */
+    position: relative; /* Required for absolute positioning */
+  }
+  
+#uploadedImage {
+    width: 100%; /* Make the image fill the container */
+    height: 100%; /* Make the image fill the container */
+    object-fit: contain; /* Preserve aspect ratio and cover the container */
+  }
+
+#uploadedImage[src=""] {
+    display: none;
+  }
+
+.custom-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  
+.custom-upload-button{
+    background-color: #10ad1b; /* Background color for the button and label */
+    color: #fff; /* Text color for the button and label */
+    border: none; /* Remove button and label border */
+    padding: 10px 20px; /* Padding around text for button and label */
+    cursor: pointer; /* Change cursor to a hand pointer on hover */
+    border-radius: 5px; /* Rounded corners */
+  }
+.custom-file-input-label {
+  background-color: #007bff; /* Background color for the button and label */
+  color: #fff; /* Text color for the button and label */
+  border: none; /* Remove button and label border */
+  padding: 10px 20px; /* Padding around text for button and label */
+  cursor: pointer; /* Change cursor to a hand pointer on hover */
+  border-radius: 5px; /* Rounded corners */
+  position: absolute; /* Position label absolutely within the container */
+  top: 50%; /* Place label at the vertical center */
+  left: 50%; /* Place label at the horizontal center */
+  transform: translate(-50%, -50%); /* Center the label */
+}
+  
+.custom-upload-button:hover {
+    background-color: #67f98e; /* Change background color on hover for button and label */
+  }
+  
+.custom-file-input-label:hover {
+  background-color: #0056b3; /* Change background color on hover for button and label */
+}
+
+  .custom-file-input {
+    display: none; /* Hide the default file input */
+  }
+  
