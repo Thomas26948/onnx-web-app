@@ -25,7 +25,15 @@ app.get('',(req,res)=>{
   })
 })
 
+app.get('/about',(req,res)=>{
+  res.render('about',{
+      title: 'Image Processing Web App',
+      name: 'Tomlak'
+  })
+})
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
+

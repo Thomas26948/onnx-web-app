@@ -1,57 +1,108 @@
-body{
-    color: #333333;
-    font-family: Helvetica;
-    max-width: 650px;
-    margin: 0 auto;
-    padding: 0 16px;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+body {
+  color: #333333;
+  font-family: system-ui, sans;
+  max-width: 100%;
+  margin: 0 auto;
+  /* padding: 0 16px; */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f5f5f5; /* Light gray background color */
+  
 }
 
+/* Style the header */
+header {
+    background-color: #3498dbed; /* Background color for the header */
+    color: #fff; /* Text color for the header */
+    padding: 20px; /* Padding around text */
+    text-align: center; /* Center-align text */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2); /* Add a shadow */
+    flex: 0 0 auto; 
+  }
+
+
 /* Style the navigation links */
-nav {
-    margin-top: 20px; /* Add spacing between header text and links */
+
+  .navbar {
+    width: 50%;
+    background-color: #555;
+    /* overflow: auto; */
+    flex: 0 0 auto; 
+
   }
   
-  .nav-link {
-    display: inline-block; /* Display links horizontally */
-    margin: 0 10px; /* Add spacing between links */
-    text-decoration: none; /* Remove underline from links */
-    color: #fff; /* Text color for links */
-    background-color: #0056b3; /* Background color for links */
-    padding: 10px 20px; /* Padding around links */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s; /* Add a smooth hover effect */
+  /* Navigation links */
+  .navbar a {
+    float: left;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    width: 25%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+    text-align: center; /* If you want the text to be centered */
   }
   
-  .nav-link:hover {
-    background-color: #0070db; /* Change background color on hover */
+  /* Add a background color on mouse-over */
+  .navbar a:hover {
+    background-color: #235d1900;
   }
+  
+  /* Style the current/active link */
+  .navbar a.active {
+    background-color: #04AA6D;
+  }
+  
+
+  a {
+    color: #ffffff;
+    position: relative;
+    text-decoration: none;
+  }
+  
+  a::before {
+    background: hsl(0, 0%, 0%);
+    content: "";
+    inset: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease-in-out;
+    z-index: -1;
+  }
+  
+  a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  
+
+
+  
+
 
 footer{
     margin-top: auto;
     background: #ffffff; 
     border-top: 1px solid #cccccc;
     padding: 16px;
-    color: #666666;
+    color: #ffffff;
     font-size: 14px;
     text-align: center;
+    background-color: #3498db; /* Background color for the header */
+    flex: 0 0 auto; 
+    width: 100%;
+
 } 
 
 
-/* Style the header */
-header {
-    background-color: #007bff; /* Background color for the header */
-    color: #fff; /* Text color for the header */
-    padding: 20px; /* Padding around text */
-    text-align: center; /* Center-align text */
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2); /* Add a shadow */
-  }
+
   
   /* Style the h1 text within the header */
   header h1 {
-    font-size: 24px; /* Adjust the font size */
+    font-size: 28px; /* Adjust the font size */
     margin: 0; /* Remove margin to prevent spacing */
   }
   
@@ -63,6 +114,8 @@ header {
     border: 2px solid #000; /* Add a border for a nice frame */
     overflow: hidden; /* Hide any overflowing image content */
     position: relative; /* Required for absolute positioning */
+    margin: 0 auto; /* Set left and right margins to "auto" for horizontal centering */
+    text-align: center;
   }
   
 #uploadedImage {
@@ -76,7 +129,7 @@ header {
   }
 
 .custom-button {
-    background-color: #007bff;
+    background-color: #3498db;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -120,16 +173,21 @@ header {
 
 
   /* Add styling for the prediction box */
-#predictionBox {
-  border: 2px solid #3498db;
-  background-color: #f2f2f2;
-  padding: 10px;
-  text-align: center;
-  margin-top: 20px;
-}
-
-/* Style the predicted label text */
-#predictedLabel {
-  font-size: 18px;
-  color: #333;
-}
+  #predictionBox {
+    border: 2px solid #007bff; /* Blue border for the prediction box */
+    background-color: #fff; /* White background color */
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    width: 50%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+  }
+  
+  /* Style the predicted label text */
+  #predictedLabel {
+    font-size: 20px;
+    color: #333;
+  }
