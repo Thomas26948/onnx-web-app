@@ -20,7 +20,12 @@
             
           </div>
         <button id="processButton" class="custom-upload-button">Process Image</button>  
+        <div id="predictionBox">
+          <p id="predictedLabel"></p>
+        </div>
     </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
 	<script src="./js/app.js"></script>
   {{> footer}}
 
