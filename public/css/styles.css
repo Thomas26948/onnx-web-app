@@ -116,12 +116,19 @@ footer{
     position: relative; /* Required for absolute positioning */
     margin: 0 auto; /* Set left and right margins to "auto" for horizontal centering */
     text-align: center;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
   }
   
 #uploadedImage {
-    width: 100%; /* Make the image fill the container */
-    height: 100%; /* Make the image fill the container */
-    object-fit: contain; /* Preserve aspect ratio and cover the container */
+  display: block;
+  margin: auto; /* Center horizontally */
+  max-width: 100%; /* Adjust the maximum width */
+  max-height: 100%; /* Adjust the maximum height */
+  object-fit: contain;
   }
 
 #uploadedImage[src=""] {
@@ -278,4 +285,21 @@ footer{
 
 #boostingUploadedImage[src=""] {
     display: none;
+  }
+
+  .image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .paste-box {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    background-image: url('../img/paste_img.jpg');
+    background-size: cover;
+    cursor: pointer;
+    border-radius: 5px;
   }
