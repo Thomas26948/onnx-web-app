@@ -17,20 +17,39 @@ hbs.registerPartials(partialsPath)
 
 app.use(express.static(path.join(__dirname,'../public')))
 
+const name = 'Tomlak'
+const title = 'Personnal AI Photo Studio'
 
 app.get('',(req,res)=>{
   res.render('index',{
-      title: 'Image Processing Web App',
-      name: 'Tomlak'
+      title: title,
+      name: name
   })
 })
 
 app.get('/about',(req,res)=>{
   res.render('about',{
-      title: 'Image Processing Web App',
-      name: 'Tomlak'
+    title: title,
+    name: name
   })
 })
+
+app.get('/boost',(req,res)=>{
+  res.render('boost',{
+    title: title,
+    name: name
+  })
+})
+
+
+
+app.get('/erazer',(req,res)=>{
+  res.render('erazer',{
+    title: title,
+    name: name
+  })
+})
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <title>Image Classification</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="icon" href="./img/logo.png" >
+  </head>
+  <body>
+  {{> header}}
+    <h1>Work In Progress</h1>
+        <p>Choose an image to upload and process it</p>
+
+    <main class="boostingMain">
+        <input type="file" id="boostingImageInput" accept="image/*" class="boosting-custom-file-input"> 
+          <div id="boostingLeftImageContainer">
+            <img id="boostingUploadedImage" src="" alt="" >
+           <label for="boostingImageInput" class="boosting-custom-file-input-label">Choose an Image</label>
+            
+          </div>
+        <p></p>
+
+
+        <div class="boosting-image-output-box">
+          <p>Output Image</p>
+          <div id="boostingOutputContainer">
+            <img id="boostingOutputImage" src="" alt="">
+          </div>
+        </div>
+        <p></p>
+
+       <div class="boosting-custom-upload-button-container">
+            <button id="boostingProcessButton" class="boosting-custom-upload-button">Process Image</button>
+        </div>
+        <p></p>
+
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+	<script src="./js/boost.js"></script>
+
+</body>
+{{> footer}}
+
+</html>

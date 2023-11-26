@@ -40,7 +40,7 @@ header {
     color: white;
     text-decoration: none;
     font-size: 17px;
-    width: 25%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+    width: 20%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
     text-align: center; /* If you want the text to be centered */
   }
   
@@ -190,4 +190,92 @@ footer{
   #predictedLabel {
     font-size: 20px;
     color: #333;
+  }
+
+
+
+  /* BOOSTING*/
+  .boostingMain {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  
+  .boosting-custom-file-input-label {
+    background-color: #007bff; /* Background color for the button and label */
+    color: #fff; /* Text color for the button and label */
+    border: none; /* Remove button and label border */
+    padding: 10px 20px; /* Padding around text for button and label */
+    cursor: pointer; /* Change cursor to a hand pointer on hover */
+    border-radius: 5px; /* Rounded corners */
+    position: absolute; /* Position label absolutely within the container */
+    top: 50%; /* Place label at the vertical center */
+    left: 50%; /* Place label at the horizontal center */
+    transform: translate(-50%, -50%); /* Center the label */
+  }
+    
+    
+  .boosting-custom-file-input-label:hover {
+    background-color: #0056b3; /* Change background color on hover for button and label */
+  }
+  .boosting-custom-file-input {
+    display: none;
+  }
+  
+  .boosting-image-output-box {
+    flex: 1;
+    margin-top: 20px;
+  }
+  
+  .boosting-custom-upload-button-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Add spacing between the button and the boxes */
+  }
+  
+  .boosting-custom-upload-button {
+    background-color: #10ad1b;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .boosting-custom-upload-button:hover {
+    background-color: #67f98e;
+  }
+  
+  #boostingLeftImageContainer {
+    width: 224px;
+    height: 224px;
+    border: 2px solid #000;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto; /* Center the container horizontally */
+    text-align: center;
+    margin-top: 75px; /* Add a margin to the left side to create space */
+
+    margin-left: 200px; /* Add a margin to the left side to create space */
+  }
+  
+  #boostingOutputContainer {
+    width: 224px;
+    height: 224px;
+    border: 2px solid #000;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto; /* Center the container horizontally */
+    text-align: center;
+  }
+
+  #boostingUploadedImage {
+    width: 100%; /* Make the image fill the container */
+    height: 100%; /* Make the image fill the container */
+    object-fit: contain; /* Preserve aspect ratio and cover the container */
+  }
+
+#boostingUploadedImage[src=""] {
+    display: none;
   }
