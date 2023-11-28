@@ -13,6 +13,17 @@
     <main>
         <p>Upload an image and the AI will describe it !</p>
         <input type="file" id="imageInput" accept="image/*" class="custom-file-input">
+ <div class="container">
+
+      <div class="dropdown">
+              <select id="dropdownOptions" class="dropbtn">Choose your AI 🤖!</button>
+                  <option value="faster" selected>Faster 🚀 </option>
+                  <option value="smarter">Smarter 🧠 </option>
+                  </select>
+              </div>
+          </div>
+
+          <p></p>
 
           <div id="imageContainer">
             <div class="image-content">
@@ -22,16 +33,25 @@
              <div id="pasteBox" class="paste-box"></div>
 
         </div>
+        </div>
         <p></p>
 
         <button id="processButton" class="custom-upload-button">🔎 Ask the AI 🤖</button>  
         <p></p>
+        <p></p>
+        <p></p>
+
         <div id="predictionBox">
           <p id="predictedLabel"></p>
         </div>
+        <p></p>
+        <p></p>
+
+
     </main>
     
     <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+    <script src="./js/float16.js"></script>
 	<script src="./js/app.js"></script>
 
 </body>

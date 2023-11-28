@@ -17,7 +17,7 @@ hbs.registerPartials(partialsPath)
 
 app.use(express.static(path.join(__dirname,'../public')))
 
-const name = 'Tomlak & brothers'
+const name = 'Tomlak & Brothers'
 const title = '✨ Personnal AI Photo Studio ✨'
 
 app.get('',(req,res)=>{
