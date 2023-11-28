@@ -13,12 +13,21 @@
 
     <main>
         <section id="about">
-            <h2>About this website</h2>
-            <p>Welcome to our website! We're here to help you with image processing and classification.</p>
-            <p>Upload an image, and our system will use a deep learning model to classify it and provide you with the results.</p>
-            <p>Explore the world of image analysis with us and discover what's hidden within your pictures.</p>
+            <h2>How is this website built ?</h2>
+            <p>Quantization.</p>
+            <p>Underlying model.</p>
+            <p>WebGPU, wasm, webgl, chrome accelerator https://github.com/microsoft/onnxruntime-inference-examples/tree/main/js/api-usage_session-options.</p>
+            
+            <p> wasm only available with nodejs, webgl only avaiable in chrome </p>
+            <p>ONNX and ORT format models consist of a graph of computations, modeled as operators, and implemented as optimized operator kernels for different hardware targets. ONNX Runtime orchestrates the execution of operator kernels via execution providers. An execution provider contains the set of kernels for a specific execution target (CPU, GPU, IoT etc). Execution provides are configured using the providers parameter. Kernels from different execution providers are chosen in the priority order given in the list of providers
+            </p>
+            <p>https://github.com/microsoft/onnxruntime/tree/main/js/web</p>
+            <p>ONNX / privacy tradeoffs.https://onnxruntime.ai/docs/tutorials/web/</p>
+            <p> ONNX runtime doc: http://www.xavierdupre.fr/app/onnxruntime/helpsphinx/api_summary.html#inferencesession </p>
+
+            <p>Learnings </p>
+            <p>what is invisible to the user is the most important, and can take a lot of work. For instance i struggled to make the paste image work, whereas for a common user it is an expected behavior</p>
           </section>
-        
         </div>
     </main>
     

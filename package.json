@@ -16,6 +16,7 @@
     "hbs": "^4.2.0",
     "onnxjs": "^0.1.8",
     "onnxruntime-node": "^1.16.1",
-    "onnxruntime-web": "^1.16.1"
+    "onnxruntime-web": "^1.16.1",
+    "webgpu": "^0.1.16"
   }
 }
