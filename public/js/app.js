@@ -199,18 +199,87 @@ function get_image_label_mobilenet(labelsFileUrl, maxIndex) {
 };
 
 
+async function loadModels() {
+  // Check if model_encoder is null
+  if (model_encoder == null) {
+    // Show loading popup
+    showLoadingPopup();
+    try {
+
+      const downloadUrl = 'https://github.com/Thomas26948/onnx-web-app/tree/main/model/vitgpt2/encoder_model_fp16_inputf32.onnx'; 
+      const response = await fetch(downloadUrl);
+      const blob = await response.blob();
+    
+      // Save the downloaded model file using FileSaver.js
+      saveAs(blob, '../model/vitgpt2/encoder_model_fp16_inputf32.onnx.onnx');
+
+      model_encoder = await ort.InferenceSession.create('../model/vitgpt2/encoder_model_fp16_inputf32.onnx', { executionProviders: ['wasm'] });
+      // Close the popup once the model is loaded
+      closePopup();
+    } catch (error) {
+      console.error('Failed to load model:', error);
+      // Handle error and close popup
+      closePopup();
+    }
+  }
+
+  // Check if model_decoder is null
+  if (model_decoder == null) {
+    // Show loading popup
+    showLoadingPopup();
+    try {
+      const downloadUrl = 'https://github.com/Thomas26948/onnx-web-app/tree/main/model/vitgpt2/decoder_model_fp16_inputf32.onnx'; 
+      const response = await fetch(downloadUrl);
+      const blob = await response.blob();
+    
+      // Save the downloaded model file using FileSaver.js
+
+      model_decoder = await ort.InferenceSession.create('../model/vitgpt2/decoder_model_fp16_inputf32.onnx', { executionProviders: ['wasm'] });
+      // Close the popup once the model is loaded
+      closePopup();
+    } catch (error) {
+      console.error('Failed to load model:', error);
+      // Handle error and close popup
+      closePopup();
+    }
+  }
+}
+
+function showLoadingPopup() {
+  // Create a popup div element
+  const popup = document.createElement('div');
+  popup.className = 'popup';
+  popup.innerHTML = `
+    <div class="popup-content">
+      <p>Downloading Model...</p>
+      <p>This can take a long time</p>
+
+      <button id="closePopupBtn">OK</button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+
+  // Add event listener to the OK button to close the popup
+  const closeBtn = document.getElementById('closePopupBtn');
+  closeBtn.addEventListener('click', closePopup);
+}
+
+function closePopup() {
+  const popup = document.querySelector('.popup');
+  if (popup) {
+    popup.remove();
+  }
+}
+
+
+
 async function processImage_smarter(imageFile) {
   const image = new Image();
   image.src = URL.createObjectURL(imageFile);
   const predictedLabelElement = document.getElementById('predictedLabel');
 
 
-  if (model_encoder == null) {
-    model_encoder = await ort.InferenceSession.create('../model/vitgpt2/encoder_model_fp16_inputf32.onnx', { executionProviders: ['wasm'] });
-  }
-  if (model_decoder == null) {
-    model_decoder = await ort.InferenceSession.create('../model/vitgpt2/decoder_model_fp16_inputf32.onnx', { executionProviders: ['wasm'] });
-  }
+ loadModels();
 
   await new Promise((resolve) => {
     image.onload = async () => {

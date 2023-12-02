@@ -7,26 +7,143 @@
     <title>Image Classification</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="icon" href="./img/logo.png" >
+    <style>
+      body {
+          text-align: left;
+      }
+      h2 {
+          text-align: center;
+      }
+      #summary {
+          margin-bottom: 20px;
+      }
+      #summary ul {
+          list-style: none;
+          padding-left: 0;
+      }
+      #summary ul li {
+          margin-bottom: 5px;
+      }
+      a {
+        color: #000000;
+        position: relative;
+        text-decoration: none;
+      }
+      .navbar a:hover {
+        background-color: #3498db;
+      }
+      .navbar a.active {
+        background-color: #3498db;
+      }
+
+      a::before {
+        background: hsl(0, 0%, 100%);
+        content: "";
+        inset: 0;
+        position: absolute;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.5s ease-in-out;
+        z-index: -1;
+      }
+      
+      
+  </style>
+
   </head>
   <body>
   {{> header}}
 
     <main>
         <section id="about">
-            <h2>How is this website built ?</h2>
-            <p>Quantization.</p>
-            <p>Underlying model.</p>
-            <p>WebGPU, wasm, webgl, chrome accelerator https://github.com/microsoft/onnxruntime-inference-examples/tree/main/js/api-usage_session-options.</p>
-            
-            <p> wasm only available with nodejs, webgl only avaiable in chrome </p>
-            <p>ONNX and ORT format models consist of a graph of computations, modeled as operators, and implemented as optimized operator kernels for different hardware targets. ONNX Runtime orchestrates the execution of operator kernels via execution providers. An execution provider contains the set of kernels for a specific execution target (CPU, GPU, IoT etc). Execution provides are configured using the providers parameter. Kernels from different execution providers are chosen in the priority order given in the list of providers
-            </p>
-            <p>https://github.com/microsoft/onnxruntime/tree/main/js/web</p>
-            <p>ONNX / privacy tradeoffs.https://onnxruntime.ai/docs/tutorials/web/</p>
-            <p> ONNX runtime doc: http://www.xavierdupre.fr/app/onnxruntime/helpsphinx/api_summary.html#inferencesession </p>
+          <h1>A Privacy Enhanced AI Image to Text Web App</h1>
+          <p>How did we build this website and what did we learn?</p>
+          <p>The initial challenge in deploying an AI application is the high computational cost. Typically, successful AI products require expensive GPU clusters. However, in this section, we'll explore leveraging <a href="https://onnx.ai/">ONNX</a> to mitigate this cost and enhance end-user privacy.</p>
+          <p>It's crucial to understand that when using this website, all processes occur locally in your browser. No images are uploaded to our servers. Instead, our models are downloaded and executed directly in the client's browser, ensuring maximum privacy.</p>
+          <section id="summary">
+            <h1>Summary</h1>
+            <ul>
+                <li><a href="#onnx">What is ONNX?</a></li>
+                <li><a href="#onnx-web">ONNX Web</a></li>
+                <li><a href="#wasm">Wasm</a></li>
+                <li><a href="#ai-models">AI Models Used</a></li>
+                <li><a href="#quantization">Quantization and Its Significance</a></li>
+                <li><a href="#tradeoffs">Tradeoffs of Local Model Execution</a></li>
+                <li><a href="#key-learnings">Key Learnings</a></li>
+                <li><a href="#useful-links">Other Useful Links</a></li>
+            </ul>
+        </section>
 
-            <p>Learnings </p>
-            <p>what is invisible to the user is the most important, and can take a lot of work. For instance i struggled to make the paste image work, whereas for a common user it is an expected behavior</p>
+        <section id="onnx">
+          <h2>What is ONNX?</h2>
+          <p>ONNX is an open format designed for representing machine learning models. It defines a standardized set of operators and a common file format, allowing AI developers to utilize models across various frameworks, tools, runtimes, and compilers.</p>
+          <p>Most AI neural networks can be exported into an ONNX file, which represents the network as a graph. Each computation within the neural network is represented using simple operators. ONNX also provides an assembly equivalent to these operators, optimizing the inference of an ONNX file and thereby reducing computational costs.</p>
+         
+        </section>
+        <section id="onnx-web">
+          <h2>ONNX Web</h2>
+          <p>In late 2022, ONNX released <a href="https://www.npmjs.com/package/onnxruntime-web">onnxruntime-web</a>, enabling the direct execution of ONNX models in web browsers through Web Assembly (Wasm).</p>
+          
+          <section id="wasm">
+            <h2>Wasm</h2>
+            <p>WebAssembly (Wasm) is a binary instruction format for a stack-based virtual machine, designed as a portable compilation target for programming languages. It is compatible with most browsers, including Chrome, Safari, Mozilla, and Edge, and runs on iOS and Android devices.</p>
+            <p>Unfortunately, this website is currently built with Node.js, and only Web Assembly (Wasm) is available. Backend options like <a href="https://get.webgl.org/">WebGL</a> are limited to Chrome, while <a href="https://www.w3.org/2020/gpu/">WebGPU</a> doesn't support float 16 models.</p>
+           
+          </section>
+
+          <section id="ai-models">
+            <h2>AI Models Used</h2>
+            <p>We provide two AI models for image transcription:</p>
+            <ul>
+                <li>Mobilenet (<a href="https://arxiv.org/pdf/1801.04381.pdf">Mobilenet Paper</a>) by Google, known for its efficiency and suitability for small devices like smartphones.</li>
+                <li>ViT-GPT2 (<a href="https://arxiv.org/pdf/2201.12723.pdf">ViT-GPT2 Paper</a>), which combines a powerful image classification AI (ViT) with a standard language model (GPT2).</li>
+            </ul>
+          </section>
+           
+          <section id="quantization">
+            <h2>Quantization and Its Significance</h2>
+            <p>Quantization, reducing precision by using fewer bits to represent weights in a neural network, is highly relevant in today's AI era. It optimizes storage and computational efficiency, albeit with a tradeoff in accuracy.</p>
+            <p>By applying float16 quantization to ViT-GPT2, we reduced the model's size from 1GB to 500MB, significantly enhancing download speeds for users. Despite challenges in implementing float16 in JavaScript, ONNX library's cast operators enable reduced inputs to float16 within the ONNX file.</p>
+            
+          </section>
+         
+          <section id="tradeoffs">
+            <h2>Tradeoffs of Local Model Execution</h2>
+            <p>Advantages:</p>
+            <ul>
+                <li>Unmatched user privacy: No data is uploaded to a distant server, ensuring user confidence, especially with sensitive data.</li>
+                <li>No server costs: Leveraging local model execution allows the use of a low-compute server, shifting the computational load to the user's GPU.</li>
+                <li>No internet connection required.</li>
+            </ul>
+            <p>Disadvantages:</p>
+            <ul>
+                <li>Varying performance based on user machine capabilities, potentially resulting in poor performance on slower devices.</li>
+                <li>Model sharing: High-performing models are shared with all users, limiting control over model access.</li>
+            </ul>
+            <p>For further details, refer to: <a href="https://onnxruntime.ai/docs/tutorials/web/">ONNX Runtime Web Documentation</a></p>
+           
+          </section>
+
+          <section id="key-learnings">
+            <h2>Key Learnings</h2>
+            <p>Building this website highlighted:</p>
+            <ul>
+                <li>The complexity of CSS and the importance of clear implementation based on desired aesthetics.</li>
+                <li>The significance of seemingly minor user experiences that may require considerable effort to implement properly.</li>
+                <li>The challenges of executing AI models locally versus deploying them on an instance, considering ongoing developments in associated libraries and limited control over user experiences.</li>
+            </ul>
+          </section>
+
+          
+          <section id="useful-links">
+            <h2>Other Useful Links</h2>
+            <p>Explore more at:</p>
+            <ul>
+                <li><a href="https://github.com/microsoft/onnxruntime/tree/main/js/web">ONNX Runtime Web Repository</a></li>
+                <li>ONNX runtime documentation: <a href="http://www.xavierdupre.fr/app/onnxruntime/helpsphinx/api_summary.html#inferencesession">ONNX Runtime API Summary</a></li>
+            </ul>
+          </section>
+            
           </section>
         </div>
     </main>
